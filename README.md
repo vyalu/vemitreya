@@ -7,6 +7,7 @@
 ![version](https://img.shields.io/badge/version-2.206.1-blue)
 ![platform](https://img.shields.io/badge/platform-Ubuntu%2022.04%20%7C%2024.04-orange)
 ![license](https://img.shields.io/badge/license-MIT-green)
+<img width="1863" height="924" alt="image" src="https://github.com/user-attachments/assets/d7bccbe2-e8de-49f7-b0f0-99b643ca5ab0" />
 
 ---
 
