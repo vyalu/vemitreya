@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="frontend/logo.png" width="72" alt="Vemitreya">
-</p>
+
 
 <h1 align="center">Vemitreya</h1>
 
