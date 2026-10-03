@@ -16,12 +16,20 @@
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/overview.png" alt="Обзор: состояние, трафик, куда идёт трафик каждого сервиса" width="100%">
+  <a href="#установка"><b>Установка</b></a> ·
+  <a href="https://github.com/vyalu/vemitreya/releases/latest"><b>Скачать последний релиз</b></a> ·
+  <a href="docs/CHANGELOG.md">Что нового</a>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/demo.webp" alt="Панель в работе: обзор, смена сервера, проверка скорости, правила, туннели, Wi-Fi" width="100%">
 </p>
 
 ---
 
 ## Что умеет
+
+<p align="center"><img src="docs/screenshots/overview.png" alt="Обзор" width="100%"></p>
 
 **Обзор.** Одной строкой — всё ли работает. Текущий трафик, нагрузка на сервер, через какой сервер сейчас идёт каждый сервис и пинг до него. «Популярные сайты» с подписями: IP-адреса подписаны сервисом (Telegram, Google, Meta…) или страной.
 
