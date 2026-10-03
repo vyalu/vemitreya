@@ -164,6 +164,13 @@ curl -H "Authorization: Bearer $MIHOMO_SECRET" http://127.0.0.1:9090/version
 - `POST /api/telegram/test` — тест Telegram уведомлений
 - `WS /ws/logs/{service}` — WebSocket стрим логов
 - `GET/PUT /api/config/mihomo` — Mihomo YAML editor
+- `POST /api/mihomo/config/undo` — вернуть конфиг Mihomo к копии `config.yaml.bak.*` (кнопка «Вернуть»)
+- `GET/PUT /api/wifi` — настройки и состояние Wi-Fi точки доступа (пароль не возвращается)
+- `GET /api/wifi/password` — сохранённый пароль точки доступа
+- `POST /api/wifi/action` — `start`, `stop`, `autostart-on`, `autostart-off`
+- `GET /api/wifi/log` — журнал службы `vemitreya-wifi`
+- `POST /api/wifi/install` — установить hostapd, dnsmasq и iw
+- `GET /api/stats/top-domains` — популярные сайты; у IP-адресов поле `label` (сервис или страна)
 - `GET /api/config/export` / `POST /api/config/import/...` — backup/restore конфигов
 
 Все требуют `Authorization: Bearer <API_TOKEN>` кроме `/api/health`.

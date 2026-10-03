@@ -1,34 +1,75 @@
-# Vemitreya
+<p align="center">
+  <img src="frontend/logo.png" width="72" alt="Vemitreya">
+</p>
 
-**Веб-панель управления прокси-инфраструктурой на базе [Mihomo](https://github.com/MetaCubeX/mihomo).**
-Объединяет Mihomo, AmneziaWG и TrustTunnel в одном интерфейсе: маршрутизация трафика,
-подписки, умный автовыбор быстрейшего сервера и автонастройка домашних роутеров.
+<h1 align="center">Vemitreya</h1>
 
-![version](https://img.shields.io/badge/version-2.206.1-blue)
-![platform](https://img.shields.io/badge/platform-Ubuntu%2022.04%20%7C%2024.04-orange)
-![license](https://img.shields.io/badge/license-MIT-green)
-<img width="1863" height="924" alt="image" src="https://github.com/user-attachments/assets/d7bccbe2-e8de-49f7-b0f0-99b643ca5ab0" />
+<p align="center">
+  <b>Веб-панель для домашнего VPN-шлюза на базе <a href="https://github.com/MetaCubeX/mihomo">Mihomo</a></b><br>
+  Какой сервис через какой сервер идёт — в одном понятном интерфейсе, с компьютера и с телефона.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/version-2.215.7-2ea44f" alt="version">
+  <img src="https://img.shields.io/badge/platform-Ubuntu%2022.04%20%7C%2024.04-orange" alt="platform">
+  <img src="https://img.shields.io/badge/license-MIT-blue" alt="license">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/overview.png" alt="Обзор: состояние, трафик, куда идёт трафик каждого сервиса" width="100%">
+</p>
 
 ---
 
-## Возможности
+## Что умеет
 
-- **Дашборд** — CPU/RAM/диск, живой трафик, активные каналы и маршрутизация.
-- **Переключение каналов** — ручной выбор сервера или **умный автовыбор**: панель
-  сама пингует серверы и держит быстрейший, с настройками на каждую группу
-  (интервал, порог переключения, исключения серверов по ключевым словам).
-- **Группы** — визуальный редактор с разделением на маршрутизацию и каналы.
-  Выбор отдельных серверов из подписок через `use` + `filter`.
-- **Подписки** — добавление и обновление proxy-providers.
-- **Правила** — редактор rules с изменением порядка.
-- **Speedtest** — матрица «прокси × сайты».
-- **AmneziaWG** — создание туннелей и интеграция в Mihomo.
-- **TrustTunnel** — обнаружение и регистрация SOCKS5-туннелей.
-- **Роутеры** — генерация скриптов автонастройки для MikroTik (RouterOS 6/7)
-  и Keenetic: списки доменов/IP маршрутизируются через сервер.
-- **Mihomo YAML** — встроенный редактор конфига.
-- **Обновления** — Mihomo и сама панель (через архив или GitHub-релизы).
-- **Telegram** — уведомления о падении сервисов.
+**Обзор.** Одной строкой — всё ли работает. Текущий трафик, нагрузка на сервер, через какой сервер сейчас идёт каждый сервис и пинг до него. «Популярные сайты» с подписями: IP-адреса подписаны сервисом (Telegram, Google, Meta…) или страной.
+
+**Серверы.** Для каждого сервиса — свой сервер: вручную или автоматически (панель сама проверяет серверы и держит быстрейший). Автовыбор можно попросить не выбирать серверы определённых стран или со словом в имени. Состав групп меняется прямо здесь перетаскиванием, любое изменение отменяется кнопкой «Вернуть».
+
+<p align="center"><img src="docs/screenshots/servers.png" alt="Серверы" width="100%"></p>
+
+**Правила.** Сайт добавляется одной строкой — тип (домен, IP, страна) определяется сам. Популярные сервисы и страны — плитками: YouTube, Telegram, ChatGPT, Instagram, «Россия напрямую» и другие в одно нажатие. Для опытных — полный редактор правил Mihomo.
+
+<p align="center"><img src="docs/screenshots/rules.png" alt="Правила: категории и страны" width="100%"></p>
+
+**Туннели.** VPN-подключения работают внутри Mihomo — без системных интерфейсов, служб и маршрутов. Вставьте конфиг провайдера, и подключение появится в списке серверов:
+
+- **AmneziaWG** 1.0–3 и WireGuard
+- **OpenVPN** — `.ovpn` от провайдера, UDP и TCP
+- **TrustTunnel** и **mieru**
+- **MASQUE** (Cloudflare WARP)
+- **Tailscale** (в том числе Headscale), **ZeroTier**, **EasyTier**
+
+Там же — серверы, добавленные вручную (VLESS, Shadowsocks, SOCKS5 и т. п.), а подписки (proxy-providers) подключаются в настройках.
+
+<p align="center"><img src="docs/screenshots/tunnels.png" alt="Туннели" width="100%"></p>
+
+**Wi-Fi точка доступа.** Сервер с USB-адаптером Wi-Fi раздаёт собственную сеть: трафик подключённых устройств идёт через Mihomo — по правилам или целиком через выбранную группу. Видно, кто подключён (имя, IP, MAC).
+
+<p align="center"><img src="docs/screenshots/wifi.png" alt="Wi-Fi точка доступа" width="100%"></p>
+
+**Ещё:**
+
+- **Роутеры** — мастер настройки MikroTik (RouterOS 6/7) и Keenetic, списки сайтов для роутера.
+- **Сервисы и DNS** — службы, порты Mihomo, определение сайтов по соединению (sniffer), DNS-сервер Mihomo.
+- **Обновления** — панель, Mihomo и гео-базы из GitHub-релизов или из архива.
+- **Telegram** — уведомления о сбоях и восстановлении.
+- **Оформление** — тёмная и светлая темы, пять цветовых акцентов, интерфейс увеличивается на экранах 2K и 4K.
+
+### На телефоне
+
+<p align="center">
+  <img src="docs/screenshots/mobile-overview.png" alt="Обзор на телефоне" width="300">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/mobile-servers.png" alt="Серверы на телефоне" width="300">
+</p>
+
+### Светлая тема
+
+<p align="center"><img src="docs/screenshots/overview-light.png" alt="Светлая тема" width="100%"></p>
+
+<sub>На скриншотах демонстрационные данные.</sub>
 
 ---
 
@@ -43,7 +84,7 @@
 ## Установка
 
 ```bash
-git clone https://github.com/Fender2677/vemitreya.git
+git clone https://github.com/vyalu/vemitreya.git
 cd vemitreya
 sudo ./install.sh
 ```
@@ -51,26 +92,39 @@ sudo ./install.sh
 Установщик предложит варианты:
 
 ```
-1) Полная установка (Mihomo + AWG + TrustTunnel + Vemitreya)  ← рекомендуется
+1) Полная установка (Mihomo + Vemitreya панель)  ← рекомендуется
 2) Только Vemitreya панель (Mihomo уже установлен)
-3) Vemitreya + Mihomo (без AWG/TrustTunnel)
-4) Только обновить Vemitreya панель
+3) Обновить Vemitreya панель
 ```
 
+AmneziaWG, TrustTunnel, OpenVPN и другие VPN отдельно ставить не нужно — они работают
+внутри Mihomo и добавляются в веб-интерфейсе («Туннели → Новый туннель»).
+
 После установки откройте `http://SERVER_IP:8888/`. API-токен будет показан в конце
-установки и сохранён в `/opt/vemitreya/.env`.
+установки и сохранён в `/opt/vemitreya/.env`. Посмотреть его позже: `sudo vemitreya-token`.
 
 ---
 
 ## Обновление
+
+**Из релиза:** скачайте архив `vemitreya-X.Y.zip` со страницы
+[Releases](https://github.com/vyalu/vemitreya/releases), затем:
+
+```bash
+unzip -o vemitreya-X.Y.zip
+cd vemitreya
+sudo ./update.sh
+```
 
 **Через git:**
 
 ```bash
 cd vemitreya
 git pull
-sudo ./install.sh   # пункт 4 — обновить панель
+sudo ./update.sh
 ```
+
+После обновления откройте панель с очисткой кэша браузера (`Ctrl+Shift+R`).
 
 **Через веб-интерфейс:** раздел «Обновления» → загрузить `.zip` архив, либо
 кнопка «Обновить с GitHub» (если в `.env` задан `PANEL_GITHUB_REPO`).
@@ -95,8 +149,7 @@ sudo ./install.sh   # пункт 4 — обновить панель
 | `/opt/vemitreya/data/panel.db` | SQLite |
 | `/opt/vemitreya/.env` | Конфигурация и API-токен |
 | `/opt/mihomo/` | Mihomo core + конфиг |
-| `/etc/amnezia/amneziawg/` | Туннели AmneziaWG (`*.conf`) |
-| `/opt/trusttunnel_client/` | TrustTunnel + конфиги |
+| `/usr/local/lib/vemitreya/vemitreya-wifi` | Служебный скрипт точки доступа Wi-Fi |
 
 Подробнее — в [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
@@ -123,9 +176,13 @@ sudo journalctl -u vemitreya -f
 # Mihomo
 sudo systemctl restart mihomo
 
-# AmneziaWG
-sudo awg-quick up <tunnel>
-sudo awg show
+# Wi-Fi точка доступа
+sudo systemctl status vemitreya-wifi
+sudo journalctl -u vemitreya-wifi -n 50
+
+# API-токен: показать / сменить
+sudo vemitreya-token
+sudo vemitreya-token rotate
 ```
 
 ---
@@ -143,5 +200,5 @@ sudo awg show
 [MIT](LICENSE) — свободное использование, изменение и распространение, в том
 числе в коммерческих целях, при сохранении текста лицензии.
 
-Проект не аффилирован с Mihomo, AmneziaWG или Keenetic; использует их как
+Проект не аффилирован с Mihomo, AmneziaWG, MikroTik или Keenetic; использует их как
 внешние компоненты.
